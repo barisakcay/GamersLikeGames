@@ -19,9 +19,13 @@ class HomeListCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configure() {
-        imageView.image = UIImage(systemName: "gamecontroller.fill")
-        titleLabel.text = "Grand Theft Auto V"
-        ratingReleasedLabel.text = "4.47" + "2013-09-17"
+    func configure(with model: Games?) {
+        
+        guard let model else { return }
+        
+        imageView.kf.setImage(with: URL(string: model.backgroundImage), placeholder: UIImage(systemName: "hourglass.circle.fill"))
+        titleLabel.text = model.name
+        let stringRating = String(model.rating!)
+        ratingReleasedLabel.text = "Rate: " + stringRating + " " + "Released Date: " + model.released!
     }
 }

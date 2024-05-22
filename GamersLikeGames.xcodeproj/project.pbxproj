@@ -25,6 +25,7 @@
 		604C65B32BFD1A6E000CD88F /* FavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604C65B22BFD1A6E000CD88F /* FavoritesVM.swift */; };
 		604C65B52BFD1A8C000CD88F /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604C65B42BFD1A8C000CD88F /* DetailsVC.swift */; };
 		604C65B72BFD1A96000CD88F /* DetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604C65B62BFD1A96000CD88F /* DetailsVM.swift */; };
+		604C65C02BFD3118000CD88F /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604C65BF2BFD3118000CD88F /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		604C65B22BFD1A6E000CD88F /* FavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVM.swift; sourceTree = "<group>"; };
 		604C65B42BFD1A8C000CD88F /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		604C65B62BFD1A96000CD88F /* DetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVM.swift; sourceTree = "<group>"; };
+		604C65BF2BFD3118000CD88F /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,11 +82,12 @@
 		604C65732BFB8EE2000CD88F /* GamersLikeGames */ = {
 			isa = PBXGroup;
 			children = (
+				604C65BE2BFD310A000CD88F /* Networking */,
 				604C65A62BFD198C000CD88F /* Scenes */,
 				604C658B2BFCA83C000CD88F /* Model */,
+				604C65B92BFD1AF8000CD88F /* Storyboards */,
 				604C65B82BFD1ADB000CD88F /* Delegates */,
 				604C65A52BFD1969000CD88F /* Resource */,
-				604C65B92BFD1AF8000CD88F /* Storyboards */,
 			);
 			path = GamersLikeGames;
 			sourceTree = "<group>";
@@ -246,6 +249,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		604C65BE2BFD310A000CD88F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				604C65BF2BFD3118000CD88F /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -337,6 +348,7 @@
 				604C65B32BFD1A6E000CD88F /* FavoritesVM.swift in Sources */,
 				604C65B52BFD1A8C000CD88F /* DetailsVC.swift in Sources */,
 				604C65902BFCA880000CD88F /* GameModel.swift in Sources */,
+				604C65C02BFD3118000CD88F /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
