@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class HomeVC: UIViewController {
     
@@ -21,6 +22,74 @@ final class HomeVC: UIViewController {
     private var viewModel = HomeVM()
     private var pageNumber = 2
     
+    //MARK: - TOPVIEWITEMS
+    
+    lazy var firstView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemTeal
+        let imageView = UIImageView()
+//        imageView.kf.setImage(with: URL(string: viewModel.getsGame(with: 1).backgroundImage))
+        view.addSubview(imageView)
+        imageView.edgeTo(view)
+        return view
+        
+    }()
+    lazy var secondView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemYellow
+        let imageView = UIImageView()
+//        imageView.kf.setImage(with: URL(string: viewModel.getsGame(with: 2).backgroundImage))
+        view.addSubview(imageView)
+        imageView.edgeTo(view)
+        return view
+    }()
+    lazy var thirdView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemRed
+        let imageView = UIImageView()
+//        imageView.kf.setImage(with: URL(string: viewModel.getsGame(with: 3).backgroundImage))
+        view.addSubview(imageView)
+        imageView.edgeTo(view)
+        return view
+    }()
+    
+    lazy var views = [firstView, secondView, thirdView]
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.isPagingEnabled = true
+        scrollView.contentSize = CGSize(width: topView.frame.width * CGFloat(views.count), height: topView.frame.height)
+        scrollView.layer.cornerRadius = 20
+        scrollView.clipsToBounds = true
+        
+        for i in 0..<views.count {
+            scrollView.addSubview(views[i])
+            views[i].frame = CGRect(x: topView.frame.width * CGFloat(i), y: 0, width: topView.frame.width, height: topView.frame.height)
+        }
+        
+        scrollView.delegate = self
+        
+        return scrollView
+    }()
+    
+    lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.numberOfPages = views.count
+        pageControl.currentPage = 0
+        pageControl.addTarget(self, action: #selector(pageControlTapHandler(sender: )), for: .touchUpInside)
+        return pageControl
+    }()
+    
+    
+    
+    @objc func pageControlTapHandler(sender: UIPageControl) {
+        scrollView.scrollTo(horizontalPage: sender.currentPage, animated: true)
+    }
+    
+    
+    
     //MARK: - LIFECYCLE
     
     override func viewDidLoad() {
@@ -28,6 +97,10 @@ final class HomeVC: UIViewController {
         let nib = UINib(nibName: Constants().homeListCellIdentifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: Constants().homeListCellIdentifier)
         topViewConfigure()
+        topView.addSubview(scrollView)
+        topView.addSubview(pageControl)
+        pageControl.pinTo(topView)
+        scrollView.edgeTo(view: topView)
         viewModel.fetchData(with: Constants().gameListURL)
     }
     
@@ -38,18 +111,8 @@ final class HomeVC: UIViewController {
     //MARK: - PRIVATE FUNCTIONS
     
     private func topViewConfigure() {
-        let myView = UIImageView()
-        let secondGameImage = UIImageView()
-        let thirdGameImage = UIImageView()
-        myView.image = UIImage(systemName: "gamecontroller")
-        myView.frame.size.height = 120
-        myView.frame.size.width = 200
-        myView.frame.origin.x = 10
-        myView.frame.origin.y = 0
-        let pageControl = UIPageControl(frame: CGRect(x: 100, y: 100, width: 80, height: 30))
-        topView.backgroundColor = .cyan
-        topView.addSubview(myView)
-        topView.addSubview(pageControl)
+        
+        
     }
     
 }
@@ -83,4 +146,11 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         CGSize(width: 380, height: 80)
     }
     
+}
+
+extension HomeVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / topView.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+    }
 }
