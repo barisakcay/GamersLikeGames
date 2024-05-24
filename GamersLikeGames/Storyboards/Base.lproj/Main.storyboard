@@ -25,21 +25,52 @@
             </objects>
             <point key="canvasLocation" x="618" y="63"/>
         </scene>
-        <!--View Controller-->
+        <!--FavoritesVC-->
         <scene sceneID="dr5-6T-j05">
             <objects>
-                <viewController id="Je7-N7-lgc" sceneMemberID="viewController">
+                <viewController id="Je7-N7-lgc" customClass="FavoritesVC" customModule="GamersLikeGames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yik-qm-P5S">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3NV-ll-zNo">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aal-Ae-odG">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Je7-N7-lgc" id="rBJ-Fh-HfS"/>
+                                    <outlet property="delegate" destination="Je7-N7-lgc" id="qRS-TW-GsM"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" id="T55-fb-XmT">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="jpL-JM-g8h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3NV-ll-zNo" firstAttribute="top" secondItem="jpL-JM-g8h" secondAttribute="top" id="Izl-cU-ocN"/>
+                            <constraint firstItem="jpL-JM-g8h" firstAttribute="bottom" secondItem="3NV-ll-zNo" secondAttribute="bottom" id="SnB-vw-aSj"/>
+                            <constraint firstItem="3NV-ll-zNo" firstAttribute="leading" secondItem="jpL-JM-g8h" secondAttribute="leading" id="TL6-7g-Y57"/>
+                            <constraint firstItem="jpL-JM-g8h" firstAttribute="trailing" secondItem="3NV-ll-zNo" secondAttribute="trailing" id="fTT-H9-U5r"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Q4-1x-DfI"/>
+                    <connections>
+                        <outlet property="collectionView" destination="3NV-ll-zNo" id="3er-N1-xc5"/>
+                        <outlet property="emptyView" destination="T55-fb-XmT" id="lQO-B5-Rm8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFc-xf-9Qs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1897" y="63"/>
+            <point key="canvasLocation" x="1896.9465648854962" y="62.676056338028175"/>
         </scene>
         <!--Item-->
         <scene sceneID="5EQ-9c-0Wk">
@@ -124,6 +155,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5p-bm-xlM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1896.9465648854962" y="-673.23943661971839"/>
+        </scene>
+        <!--DetailsVC-->
+        <scene sceneID="gXV-To-dNT">
+            <objects>
+                <viewController storyboardIdentifier="DetailsVC" id="S0b-L8-6up" customClass="DetailsVC" customModule="GamersLikeGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="edB-Kg-OyF">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ES9-wH-TfL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8cy-iE-8Pz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3064.8854961832058" y="-377.46478873239437"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vpd-Eq-iyD">

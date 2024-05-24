@@ -12,4 +12,6 @@ struct Constants {
     let gameListURL = "https://api.rawg.io/api/games?%2Fvideo-game-releases=&key=606b1866125d40dd8dbe7825969aec8f"
     let gameDetailBaseURL = "https://api.rawg.io/api/games/"
     let homeListCellIdentifier = "HomeListCell"
+    let favoritesCellIdentifier = "FavoritesCell"
+    let detailsViewIdentifier = "DetailsVC"
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct FavoritesVM {
+final class FavoritesVM {
     
 }

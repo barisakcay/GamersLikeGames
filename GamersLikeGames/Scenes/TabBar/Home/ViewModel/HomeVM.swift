@@ -24,8 +24,6 @@ final class HomeVM {
                     for game in games {
                         self.results.append(game)
                     }
-                    print("HomeVM\(self.results)")
-                    print("HomeVM\(self.resultsCount)")
                 }
             }
         }
@@ -40,7 +38,7 @@ final class HomeVM {
         do {
             let decodedData = try decoder.decode(GameModel.self, from: gameData)
             return decodedData.results
-        }catch {
+        } catch {
             print("Decode error: \(error.localizedDescription)")
         }
         return nil
