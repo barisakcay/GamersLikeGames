@@ -48,6 +48,7 @@ Video games listing app. Including game searching, adding to favorites and reach
 
 # Screen Shots
 <p>
+  
 ![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 12 59](https://github.com/barisakcay/GamersLikeGames/assets/96023746/a91e1401-d5db-4852-a66e-7bb0afcd0bfe)
 ![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 08](https://github.com/barisakcay/GamersLikeGames/assets/96023746/d2156ab1-6e13-4610-98fb-0376b804e4db)
 ![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 35](https://github.com/barisakcay/GamersLikeGames/assets/96023746/8f71678f-608f-4247-b2c9-50558398b4f2)
