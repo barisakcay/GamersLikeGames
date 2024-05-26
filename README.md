@@ -25,19 +25,19 @@ Video games listing app. Including game searching, adding to favorites and reach
 
 
 # Architecture
-<p>* Gamers Like Games project is implemented using the <strong>Model-View-ViewModel (MVVM)</strong> architecture pattern.
-* Model has constants file for datas that using different part of project and must writen correctly.
-* Storyboards has Main.storyboard and LaunchScreen.storyboard views.
-* Delegates has AppDelegate.swift and SceneDelegate.swift files.
-* Extensions has extensions for scrollview, imageview, iuview and iulabel.
-* Resources has coredata model, info.plist and assets files.
-* Scenes has 2 folders named TabBar and Details. In tabbar has 3 more folders for favorites screen, home screen and controller(for tabbar). Favorites and home screen has model, view, viewmodel and controller folders for those files.  <br><br>
+<p>* Gamers Like Games project is implemented using the <strong>Model-View-ViewModel (MVVM)</strong> architecture pattern.<br>
+* Model has constants file for datas that using different part of project and must writen correctly.<br>
+* Storyboards has Main.storyboard and LaunchScreen.storyboard views.<br>
+* Delegates has AppDelegate.swift and SceneDelegate.swift files.<br>
+* Extensions has extensions for scrollview, imageview, iuview and iulabel.<br>
+* Resources has coredata model, info.plist and assets files.<br>
+* Scenes has 2 folders named TabBar and Details. In tabbar has 3 more folders for favorites screen, home screen and controller(for tabbar).<br>
+* Favorites and home screen has model, view, viewmodel and controller folders for those files. <br><br>
 </p>
 
 
 # Design 
 * Design similar to assignment pdf.
-* Also inspired from [Mobbin](https://mobbin.com) apps.
 
 # API 
 * Used https://api.rawg.io/api/games API.
@@ -48,13 +48,15 @@ Video games listing app. Including game searching, adding to favorites and reach
 
 # Screen Shots
 <p>
-  
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-10 at 16 17 06](https://github.com/barisakcay/Gonna-Be-Rich/assets/96023746/622af825-3f94-43be-a798-c6b68cfa235f)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-10 at 16 17 14](https://github.com/barisakcay/Gonna-Be-Rich/assets/96023746/cd6a569a-46f0-499e-bc67-83c5f6c4687f)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-10 at 16 17 26](https://github.com/barisakcay/Gonna-Be-Rich/assets/96023746/7c99971a-378b-4e80-8f51-92fa65452b86)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-10 at 16 17 35](https://github.com/barisakcay/Gonna-Be-Rich/assets/96023746/03c57e01-a089-40b6-9ea1-d521d9acb7be)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-10 at 16 18 53](https://github.com/barisakcay/Gonna-Be-Rich/assets/96023746/b8c86194-f4d2-4d79-a032-c26cad4c7711)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-10 at 16 18 59](https://github.com/barisakcay/Gonna-Be-Rich/assets/96023746/2024b711-b516-4326-a482-a7e8511c8f68)
+
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 12 59](https://github.com/barisakcay/GamersLikeGames/assets/96023746/cd35a255-f264-40e3-92c3-73efd19e1912)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 08](https://github.com/barisakcay/GamersLikeGames/assets/96023746/96bbb339-469c-4896-b331-0218267f658d)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 19](https://github.com/barisakcay/GamersLikeGames/assets/96023746/7f0008a5-1890-465c-88e1-27330802f352)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 35](https://github.com/barisakcay/GamersLikeGames/assets/96023746/3ab1c9d1-af10-44a9-998f-0f242daf0029)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 56](https://github.com/barisakcay/GamersLikeGames/assets/96023746/f60a6afb-8604-4b9f-a42e-c64e09b8c9fc)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 14 04](https://github.com/barisakcay/GamersLikeGames/assets/96023746/cbe7df38-df87-4023-aa2c-6d9702f93b48)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 15 22](https://github.com/barisakcay/GamersLikeGames/assets/96023746/bfa910a9-ab76-4e8f-aad7-ea3d19f3b24f)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 15 31](https://github.com/barisakcay/GamersLikeGames/assets/96023746/a0d40994-6230-424b-8fd7-d71829f8ebf9)
 
 </p>
 
