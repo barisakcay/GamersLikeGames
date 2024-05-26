@@ -9,33 +9,39 @@ import UIKit
 
 final class FavoritesVC: UIViewController {
     
+    //MARK: - OUTLETS
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
+    //MARK: - PROPERTIES
+    
     private var viewModel = FavoritesVM()
+    
+    //MARK: - LIFECYCLE METHODS
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: Constants().favoritesCellIdentifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: Constants().favoritesCellIdentifier)
-        viewModel.loadItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        viewModel.loadItems()
         collectionView.reloadData()
-//        if viewModel.favoritedItems.isEmpty {
-//            let emptyView = UIView()
-//            emptyView.backgroundColor = .blue
-//            emptyView.translatesAutoresizingMaskIntoConstraints = false
-//            view.addSubview(emptyView)
-//            emptyView.pinTo(view)
-//        }
     }
 }
+
+//MARK: - COLLECTIONVIEW DATASOURCE + DELEGATE METHODS
 
 extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.favoritedItems.count
+        if viewModel.favoritedItems.count == 0 {
+            self.collectionView.setEmptyMessage("There is no favorited game here!")
+            return 0
+        } else {
+            return viewModel.favoritedItems.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

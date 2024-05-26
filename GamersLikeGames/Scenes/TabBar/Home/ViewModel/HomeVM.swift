@@ -7,16 +7,16 @@
 import UIKit
 
 final class HomeVM {
-    
+
     //MARK: - PROPERTIES
-    
+
     private var results: [Games] = []
     private var searchResults: [Games] = []
     var resultsCount: Int { results.count }
     var searchedResultsCount: Int { searchResults.count }
-    
+
     //MARK: - FETCHING GAME DATA
-    
+
     func fetchData(with urlString: String) {
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
@@ -31,9 +31,9 @@ final class HomeVM {
         }
         task.resume()
     }
-    
+
     //MARK: - FETCHING SEARCHING DATA
-    
+
     func fetchSearchedData(with urlString: String) {
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
@@ -46,11 +46,11 @@ final class HomeVM {
         }
         task.resume()
     }
-    
+
     //MARK: - PARSING GAME DATA
-    
+
     func parseJSON(_ gameData: Data) -> [Games]? {
-        
+
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(GameModel.self, from: gameData)
@@ -60,14 +60,14 @@ final class HomeVM {
         }
         return nil
     }
-    
+
     func getsGame(with: Int) -> Games {
         if resultsCount != 0 {
             return results[with]
         }
         return Games(id: 1, name: "No Name", released: "No Time", rating: 0.0, backgroundImage: "https://media.rawg.io/media/games/46d/46d98e6910fbc0706e2948a7cc9b10c5.jpg")
     }
-    
+
     func getSearchedGame(with: Int) -> Games {
         if searchedResultsCount != 0 {
             return searchResults[with]

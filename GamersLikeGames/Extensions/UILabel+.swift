@@ -5,8 +5,6 @@
 //  Created by Baris Akcay on 24.05.2024.
 //
 
-import Foundation
-
 import UIKit
 
 public extension UILabel {

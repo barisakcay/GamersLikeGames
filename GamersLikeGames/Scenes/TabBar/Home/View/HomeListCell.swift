@@ -16,13 +16,11 @@ class HomeListCell: UICollectionViewCell {
     @IBOutlet weak var cellView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configure(with model: Games?) {
         
         guard let model else { return }
-        
         imageView.kf.setImage(with: URL(string: model.backgroundImage), placeholder: UIImage(systemName: "hourglass.circle.fill"))
         titleLabel.text = model.name
         let stringRating = String(model.rating!)

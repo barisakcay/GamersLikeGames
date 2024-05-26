@@ -110,7 +110,7 @@ final class HomeVC: UIViewController {
 
     //MARK: - PRIVATE FUNCTIONS
 
-    func topViewSetup() {
+    private func topViewSetup() {
         topView.addSubview(scrollView)
         topView.addSubview(pageControl)
         pageControl.pinTo(topView)
@@ -124,7 +124,12 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isSearching {
-            return viewModel.searchedResultsCount
+            if viewModel.searchedResultsCount == 0 {
+                self.collectionView.setEmptyMessage("Can't Find Anything :(")
+                return 0
+            } else {
+                return viewModel.searchedResultsCount
+            }
         } else {
             return viewModel.resultsCount
         }
@@ -198,13 +203,6 @@ extension HomeVC: UISearchBarDelegate {
                 topView.heightAnchor.constraint(equalToConstant: 160),
             ])
             pageControl.isHidden = false
-//            NSLayoutConstraint.activate([
-//                collectionView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 200),
-//                collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 16),
-//                collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: -16),
-//                collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//            ])
-//            collectionView.isHidden = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.collectionView.reloadData()

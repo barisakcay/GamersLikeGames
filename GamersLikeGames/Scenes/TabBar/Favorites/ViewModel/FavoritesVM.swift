@@ -10,10 +10,10 @@ import CoreData
 
 final class FavoritesVM {
     
-
     var favoritedItems: [Games] = []
     
     func loadItems() {
+        favoritedItems = []
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorited")
@@ -28,10 +28,7 @@ final class FavoritesVM {
                     guard let released = result.value(forKey: "released") as? String else { return }
                     let rating = Float(1)
                     favoritedItems.append(Games(id: id, name: name, released: released, rating: rating, backgroundImage: backgroundImage))
-                    print(favoritedItems)
                 }
-            } else {
-                // Favorited Empty Screen
             }
         } catch {
             print("Favorited Items Fetching Error: \(error.localizedDescription)")

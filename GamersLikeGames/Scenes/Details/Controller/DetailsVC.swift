@@ -82,8 +82,9 @@ final class DetailsVC: UIViewController {
     lazy var gameImage: UIImageView = {
         let image = UIImageView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            guard let imageString = self.viewModel.detail.first?.backgroundImage else { return }
             image.kf.setImage(
-                with: URL(string: self.viewModel.detail[0].backgroundImage!),
+                with: URL(string: imageString),
                 placeholder: UIImage(systemName: "hourglass.circle"))
         }
         image.contentMode = .scaleAspectFit
@@ -127,8 +128,10 @@ final class DetailsVC: UIViewController {
         return label
     }()
     
+    //MARK: - FAVORITEBUTTON ACTION
+    
     @objc func favoriteButtonPressed(sender: UIButton) {
-        print("button tapped")
+
         if favoriteButton.imageView?.image == UIImage(systemName: "heart") {
             favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             viewModel.saveFavorite()
@@ -144,7 +147,7 @@ final class DetailsVC: UIViewController {
         }
     }
     
-    //MARK: - View Confuguration Methods
+    //MARK: - VIEW CONFUGURATION METHODS
     
     func configureUI() {
         view.addSubview(scrollView)
