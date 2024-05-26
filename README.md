@@ -48,15 +48,15 @@ Video games listing app. Including game searching, adding to favorites and reach
 
 # Screen Shots
 <p>
-  
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 12 59](https://github.com/barisakcay/GamersLikeGames/assets/96023746/a91e1401-d5db-4852-a66e-7bb0afcd0bfe)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 08](https://github.com/barisakcay/GamersLikeGames/assets/96023746/d2156ab1-6e13-4610-98fb-0376b804e4db)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 35](https://github.com/barisakcay/GamersLikeGames/assets/96023746/8f71678f-608f-4247-b2c9-50558398b4f2)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 19](https://github.com/barisakcay/GamersLikeGames/assets/96023746/78d89c41-426f-4b65-8da3-8fee6f197e1a)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 15 31](https://github.com/barisakcay/GamersLikeGames/assets/96023746/fedb7c42-f34f-453f-8ded-50266e0a42ca)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 15 22](https://github.com/barisakcay/GamersLikeGames/assets/96023746/d8c637a0-804d-4083-a511-40e8352f8edb)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 14 04](https://github.com/barisakcay/GamersLikeGames/assets/96023746/df5267d7-2eac-4f65-bdaf-3d24644527af)
-![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 56](https://github.com/barisakcay/GamersLikeGames/assets/96023746/cf71af10-82fa-4579-8522-b688d69ee20d)
+
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 12 59](https://github.com/barisakcay/GamersLikeGames/assets/96023746/cd35a255-f264-40e3-92c3-73efd19e1912)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 08](https://github.com/barisakcay/GamersLikeGames/assets/96023746/96bbb339-469c-4896-b331-0218267f658d)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 19](https://github.com/barisakcay/GamersLikeGames/assets/96023746/7f0008a5-1890-465c-88e1-27330802f352)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 35](https://github.com/barisakcay/GamersLikeGames/assets/96023746/3ab1c9d1-af10-44a9-998f-0f242daf0029)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 13 56](https://github.com/barisakcay/GamersLikeGames/assets/96023746/f60a6afb-8604-4b9f-a42e-c64e09b8c9fc)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 14 04](https://github.com/barisakcay/GamersLikeGames/assets/96023746/cbe7df38-df87-4023-aa2c-6d9702f93b48)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 15 22](https://github.com/barisakcay/GamersLikeGames/assets/96023746/bfa910a9-ab76-4e8f-aad7-ea3d19f3b24f)
+![Simulator Screenshot - iPhone 15 Pro - 2024-05-26 at 18 15 31](https://github.com/barisakcay/GamersLikeGames/assets/96023746/a0d40994-6230-424b-8fd7-d71829f8ebf9)
 
 </p>
 
