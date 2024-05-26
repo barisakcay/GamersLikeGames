@@ -13,9 +13,10 @@ struct GameDetailModel: Decodable {
     let description: String?
     let metacritic: Int?
     let backgroundImage: String?
+    let id: Int?
     
     enum CodingKeys: String, CodingKey {
-        case name, released, description, metacritic
+        case name, released, description, metacritic,id
         case backgroundImage = "background_image"
     }
 }

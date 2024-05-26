@@ -26,6 +26,7 @@ class HomeListCell: UICollectionViewCell {
         imageView.kf.setImage(with: URL(string: model.backgroundImage), placeholder: UIImage(systemName: "hourglass.circle.fill"))
         titleLabel.text = model.name
         let stringRating = String(model.rating!)
-        ratingReleasedLabel.text = "Rate: " + stringRating + " " + "Released Date: " + model.released!
+        guard let released = model.released else { return }
+        ratingReleasedLabel.text = "Rate: " + stringRating + " " + "Released Date: " + released
     }
 }

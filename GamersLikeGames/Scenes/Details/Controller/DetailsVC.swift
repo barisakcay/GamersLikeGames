@@ -9,16 +9,22 @@ import UIKit
 import Kingfisher
 
 final class DetailsVC: UIViewController {
-
+    
+    //MARK: - PROPERTIES
+    
     var id = Int()
+    var isFavorited = false
     private var viewModel = DetailsVM()
+    
+    //MARK: - LIFECYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         viewModel.fetchData(with: Constants().gameDetailBaseURL + "\(id)?key=" + Constants().apiKey)
-        
+        configureUI()
     }
+    
+    //MARK: - VIEW INITIALIZATIONS
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -89,23 +95,56 @@ final class DetailsVC: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            button.backgroundColor = .cyan
+            button.setImage(UIImage(systemName: "heart"), for: .normal)
+            button.configuration?.imagePadding = 50
+            button.tintColor = .red
         }
+        button.addTarget(self, action: #selector(favoriteButtonPressed(sender: )), for: .touchUpInside)
         return button
     }()
     
     lazy var gameDescription: UILabel = {
         let label = UILabel()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            label.text = self.viewModel.detail.first?.description
+            if let description = self.viewModel.detail.first?.description?.data(using: .utf8) {
+                let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+                    .documentType: NSAttributedString.DocumentType.html,
+                    .characterEncoding: String.Encoding.utf8.rawValue
+                ]
+                do {
+                    let attributedString = try NSAttributedString(data: description, options: options, documentAttributes: nil)
+                    let descriptionString = attributedString.string
+                    label.text = descriptionString
+                } catch {
+                    print("Failed to convert HTML to plain string: \(error)")
+                }
+            }
         }
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 16)
+        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         label.lineBreakMode = .byWordWrapping
         return label
     }()
     
+    @objc func favoriteButtonPressed(sender: UIButton) {
+        print("button tapped")
+        if favoriteButton.imageView?.image == UIImage(systemName: "heart") {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            viewModel.saveFavorite()
+        } else {
+            let refreshAlert = UIAlertController(title: "Remove", message: "This game will remove from favorites.", preferredStyle: UIAlertController.Style.alert)
+
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            }))
+            present(refreshAlert, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: - View Confuguration Methods
     
     func configureUI() {
         view.addSubview(scrollView)
@@ -135,6 +174,13 @@ final class DetailsVC: UIViewController {
             topView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
             topView.heightAnchor.constraint(lessThanOrEqualTo: contentView.heightAnchor, constant: 150)
         ])
+        topView.addSubview(favoriteButton)
+        NSLayoutConstraint.activate([
+            favoriteButton.rightAnchor.constraint(equalTo: topView.rightAnchor,constant: -8),
+            favoriteButton.topAnchor.constraint(equalTo: topView.topAnchor, constant: 60),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 54),
+            favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.widthAnchor)
+        ])
         topView.addSubview(gameNameLabel)
         NSLayoutConstraint.activate([
             gameNameLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 10),
@@ -162,16 +208,9 @@ final class DetailsVC: UIViewController {
         middleView.addSubview(gameImage)
         NSLayoutConstraint.activate([
             gameImage.topAnchor.constraint(equalTo: middleView.topAnchor, constant: 10),
-            gameImage.leftAnchor.constraint(equalTo: middleView.leftAnchor),
-            gameImage.rightAnchor.constraint(equalTo: middleView.rightAnchor),
+            gameImage.leftAnchor.constraint(equalTo: view.leftAnchor),
+            gameImage.rightAnchor.constraint(equalTo: view.rightAnchor),
             gameImage.heightAnchor.constraint(equalToConstant: 240)
-        ])
-        gameImage.addSubview(favoriteButton)
-        NSLayoutConstraint.activate([
-            favoriteButton.rightAnchor.constraint(equalTo: gameImage.rightAnchor,constant: -8),
-            favoriteButton.bottomAnchor.constraint(equalTo: gameImage.bottomAnchor, constant: -8),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 60),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 60)
         ])
         middleView.addSubview(gameDescription)
         NSLayoutConstraint.activate([

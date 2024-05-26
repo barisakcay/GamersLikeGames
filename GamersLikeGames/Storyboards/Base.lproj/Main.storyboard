@@ -48,10 +48,6 @@
                                     <outlet property="delegate" destination="Je7-N7-lgc" id="qRS-TW-GsM"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" id="T55-fb-XmT">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jpL-JM-g8h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -65,7 +61,6 @@
                     <navigationItem key="navigationItem" id="7Q4-1x-DfI"/>
                     <connections>
                         <outlet property="collectionView" destination="3NV-ll-zNo" id="3er-N1-xc5"/>
-                        <outlet property="emptyView" destination="T55-fb-XmT" id="lQO-B5-Rm8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFc-xf-9Qs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

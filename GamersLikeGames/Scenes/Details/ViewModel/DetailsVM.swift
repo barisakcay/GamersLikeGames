@@ -5,7 +5,8 @@
 //  Created by Baris Akcay on 21.05.2024.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 final class DetailsVM {
     
@@ -35,4 +36,35 @@ final class DetailsVM {
         }
         return nil
     }
+    
+    func saveFavorite() {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let newGame = NSEntityDescription.insertNewObject(forEntityName: "Favorited", into: context)
+        newGame.setValue(detail.first?.name!, forKey: "name")
+        newGame.setValue(detail.first?.id!, forKey: "id")
+        newGame.setValue(detail.first?.released!, forKey: "released")
+        newGame.setValue(detail.first?.backgroundImage!, forKey: "backgroundImage")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Data save error \(error.localizedDescription)")
+        }
+    }
+    
+//    func deleteFavorite() {
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//        let context = appDelegate.persistentContainer.viewContext
+//        
+//        let newGame = NSEntityDescription.insertNewObject(forEntityName: "Favorited", into: context)
+//        newGame.setValue(detail.first?.name!, forKey: "name")
+//        newGame.setValue(detail.first?.id!, forKey: "id")
+//        newGame.setValue(detail.first?.released!, forKey: "released")
+//        newGame.setValue(detail.first?.backgroundImage!, forKey: "backgroundImage")
+//
+//        conte
+//    }
 }

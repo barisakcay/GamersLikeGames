@@ -10,7 +10,6 @@ import Kingfisher
 
 final class HomeVC: UIViewController {
     
-    
     //MARK: - OUTLETS
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -21,6 +20,7 @@ final class HomeVC: UIViewController {
     
     private var viewModel = HomeVM()
     private var pageNumber = 2
+    private var isSearching: Bool = false
     
     //MARK: - TOPVIEW ITEMS
     
@@ -104,6 +104,8 @@ final class HomeVC: UIViewController {
             self.collectionView.reloadData()
         }
         topViewSetup()
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        navigationItem.title = "GamersLikeGames"
     }
 
     //MARK: - PRIVATE FUNCTIONS
@@ -121,17 +123,25 @@ final class HomeVC: UIViewController {
 extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.resultsCount
+        if isSearching {
+            return viewModel.searchedResultsCount
+        } else {
+            return viewModel.resultsCount
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants().homeListCellIdentifier, for: indexPath) as? HomeListCell else { return UICollectionViewCell()}
-        cell.configure(with: viewModel.getsGame(with: indexPath.row))
+        if isSearching == false {
+            cell.configure(with: viewModel.getsGame(with: indexPath.row))
+        }else {
+            cell.configure(with: viewModel.getSearchedGame(with: indexPath.row))
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.row == (viewModel.resultsCount - 2)) {
+        if (indexPath.row == (viewModel.resultsCount - 2)) && isSearching == false{
             self.viewModel.fetchData(with: Constants().gameListURL + "&page=\(self.pageNumber)")
             self.pageNumber += 1
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -147,7 +157,11 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: Constants().detailsViewIdentifier) as! DetailsVC
-        detailVC.id = viewModel.getsGame(with: indexPath.row).id!
+        if isSearching {
+            detailVC.id = viewModel.getSearchedGame(with: indexPath.row).id!
+        }else {
+            detailVC.id = viewModel.getsGame(with: indexPath.row).id!
+        }
         self.present(detailVC, animated: true)
     }
 }
@@ -158,5 +172,42 @@ extension HomeVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / topView.frame.width)
         pageControl.currentPage = Int(pageIndex)
+    }
+}
+
+//MARK: - SEARCH BAR DELEGATE
+
+extension HomeVC: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.fetchSearchedData(with:Constants().gameListURL + "&search=\(searchText.lowercased())")
+        if searchText != "" {
+            isSearching = true
+            topView.isHidden = true
+            pageControl.isHidden = true
+            NSLayoutConstraint.activate([
+                collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor)
+            ])
+        } else {
+            isSearching = false
+            topView.isHidden = false
+            NSLayoutConstraint.activate([
+                topView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
+                topView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+                topView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+                topView.heightAnchor.constraint(equalToConstant: 160),
+            ])
+            pageControl.isHidden = false
+//            NSLayoutConstraint.activate([
+//                collectionView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 200),
+//                collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 16),
+//                collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: -16),
+//                collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//            ])
+//            collectionView.isHidden = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.collectionView.reloadData()
+        }
     }
 }
